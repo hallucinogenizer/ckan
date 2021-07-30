@@ -1,0 +1,120 @@
+:root {
+  --color-1: #3e525c;
+  --color-2: #00a1ac;
+  --color-3: #ffa700;
+}
+
+nav {
+    background-color:white;
+    width:100%;
+    font-size:20px;
+    vertical-align: middle;
+  }
+
+  nav > div > div > a > img {
+    height:3.4em;
+    margin:20px 0px;
+  }
+
+  nav > div {
+    display:flex;
+    flex-basis:20%;
+    justify-content:space-around;
+    align-items:center;
+    height:100%;
+    width:100vw;
+  }
+
+  nav ul {
+    flex-basis:70%;
+    justify-content:flex-end;
+    display:flex;
+    list-style-type: none;
+    margin-bottom:0;
+  }
+
+  nav ul li {
+    padding:0px 20px;
+  }
+
+  nav a {
+    color:var(--color-1) !important;
+  }
+
+  #myCarousel {
+    max-height:30vmax!important;
+  }
+  
+  #slideshow {
+    width:100%;
+    height:28vmax;
+    background-image:url("/banner-5.png");
+    background-position:center;
+  }
+
+  .dropdown-li {
+    position:relative;
+  }
+
+  .dropdown-ul {
+    display:none;
+    position:absolute;
+    z-index:2;
+    font-weight:400;
+    color:#333;
+    font-size:14px;
+    width:max-content;
+    float:left;
+    background-color:white;
+    padding-left:0;
+    border:1px solid rgba(0,0,0,.15);
+    border-radius:0px 0px 4px 4px;
+    right:13px;
+    top:30px;
+  }
+
+  .dropdown-ul li {
+    padding:5px 20px;
+  }
+
+  #login-nav {
+    display:block;
+    margin-bottom:0;
+    font-size:13px;
+    background-color:#003647;
+    border-radius:0!important;
+    width:100%;
+    height:31px;
+  }
+
+  #login-nav > ul {
+    float:right;
+    margin-right:80px;
+    height:100%;
+  }
+
+  #login-nav > ul > li {
+    height:100%;
+    padding-top:5px;
+  }
+
+  #login-nav ul li a {
+    color:#bfd7de!important;
+    padding:7px 10px;
+    height:100%;
+    border-left:1px solid #00232e;
+  }
+
+  #login-nav ul li:hover {
+    text-decoration:none;
+    background-color:#001b24;
+  }
+
+  div.item img {
+    width:100%;
+    height:auto;
+  }
+
+  div.item {
+    max-height:30vmax;
+  }

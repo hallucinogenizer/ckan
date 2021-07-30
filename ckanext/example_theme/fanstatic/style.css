@@ -1,0 +1,68 @@
+nav {
+    background-color:white;
+    width:100%;
+    height:auto;
+    font-size:20px;
+    vertical-align: middle;
+  }
+
+  nav > div > div > a > img {
+    height:3.4em;
+    margin:20px 0px;
+  }
+
+  nav > div {
+    display:flex;
+    flex-basis:20%;
+    justify-content:space-around;
+    align-items:center;
+    height:100%;
+  }
+
+  nav ul {
+    flex-basis:70%;
+    justify-content:flex-end;
+    display:flex;
+    list-style-type: none;
+    margin-bottom:0;
+  }
+
+  nav ul li {
+    padding:0px 15px;
+  }
+
+  nav a {
+    color:#3e525c !important;
+  }
+  
+  #slideshow {
+    width:100%;
+    height:28vmax;
+    background-image:url("/banner-5.png");
+    background-position:center;
+  }
+
+  .dropdown-li {
+    position:relative;
+  }
+
+  .dropdown-ul {
+    display:none;
+    position:absolute;
+    z-index:2;
+    font-weight:400;
+    color:#333;
+    font-size:14px;
+    width:max-content;
+    float:left;
+    background-color:white;
+    padding-left:0;
+    border:1px solid rgba(0,0,0,.15);
+    border-radius:0px 0px 4px 4px;
+    right:13px;
+    top:30px;
+  }
+
+  .dropdown-ul li {
+    padding:5px 20px;
+  }

@@ -1,0 +1,44 @@
+:root {
+    --color-1: #3e525c;
+    --color-2: #00a1ac;
+    --color-3: #ffa700;
+}
+
+header.navbar {
+    background:white !important;
+    margin-bottom:0;
+}
+
+header.navbar a {
+    color:var(--color-1)!important;
+}
+
+nav.navigation li {
+    padding: 15px 0px;
+    font-size:20px;
+}
+
+hgroup.header-image {
+    margin-top:17px;
+}
+
+form.simple-input {
+    display:none !important;
+}
+
+div.field {
+    display:none !important;
+}
+
+#myCarousel {
+    max-height:30vmax!important;
+}
+
+#myCarousel div.item img {
+    width:100%;
+    height:auto;
+}
+
+#myCarousel div.item {
+    max-height:30vmax;
+}
