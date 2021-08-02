@@ -3,12 +3,6 @@
 {% block styles %}
         {{ super() }}
   <link rel="stylesheet" href="custom.css" />
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <!-- jQuery library -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!-- Latest compiled JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 {% endblock %}
 
@@ -47,6 +41,16 @@
     </a>
   </div>
 
-  {% block search %}
-  {% endblock %}
+  <div id='search-div' class='container'>
+    <h3>Find, Explore and Reuse Pakistan's Open Data</h3>
+    <form class="module-content search-form" method="get" action="/dataset">
+      <div class="search-input form-group search-giant">
+        <input aria-label="Search datasets" id="field-main-search" type="text" class="form-control" name="q" value="" autocomplete="off" placeholder="Search Pakistan Open Data">
+        <button type="submit">
+          <i class="hidden-xs fa fa-search"></i>
+          <span class="sr-only">Search</span>
+        </button>
+      </div>
+    </form>
+  </div>
 {% endblock %}

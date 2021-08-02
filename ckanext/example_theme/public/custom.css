@@ -4,24 +4,6 @@
     --color-3: #ffa700;
 }
 
-header.navbar {
-    background:white !important;
-    margin-bottom:0;
-}
-
-header.navbar a {
-    color:var(--color-1)!important;
-}
-
-nav.navigation li {
-    padding: 15px 0px;
-    font-size:20px;
-}
-
-hgroup.header-image {
-    margin-top:17px;
-}
-
 form.simple-input {
     display:none !important;
 }
@@ -41,4 +23,34 @@ div.field {
 
 #myCarousel div.item {
     max-height:30vmax;
+}
+
+#search-div {
+    background-color:#eee;
+    text-align:center;
+    width:100%;
+}
+
+#search-div h3 {
+    color:#00a1ac;
+    font-weight:bold;
+    font-size:24px;
+    font-family:inherit;
+}
+
+span.form-select {
+    display:none!important;
+}
+#search-div form {
+    width:50%;
+    margin:auto;
+    padding:0;
+}
+
+#field-main-search {
+    background-color:rgba(0,0,0,0) !important;
+    font-size:16px;
+    padding:15px;
+    border-color: var(--color-1);
+    border-radius:17px;
 }
