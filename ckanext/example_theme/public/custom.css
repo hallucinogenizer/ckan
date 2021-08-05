@@ -91,3 +91,9 @@ section.categories {
     background-color:white;
     padding:80px;
 }
+
+section.actions {
+    padding:80px;
+    background-color: #eee;
+}
+
