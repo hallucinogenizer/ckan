@@ -87,13 +87,22 @@ div.single-category img:hover {
     cursor:pointer;
 }
 
+div.single-category p {
+    font-size:14px;
+    max-width:9em!important;
+}
+
 section.categories {
     background-color:white;
     padding:80px;
 }
 
-section.actions {
-    padding:80px;
-    background-color: #eee;
+
+section.calls-actions img {
+    height:13em;
+    width:auto;
 }
 
+section.calls-actions img:hover {
+    filter:var(--hover-filter);
+}
