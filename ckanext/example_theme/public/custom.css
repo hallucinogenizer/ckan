@@ -2,6 +2,8 @@
     --color-1: #3e525c;
     --color-2: #00a1ac;
     --color-3: #ffa700;
+    --hover-filter: invert(50%) sepia(65%) saturate(5930%) hue-rotate(158deg) brightness(100%) contrast(103%) !important;
+    --default-filter: brightness(0) saturate(100%) invert(31%) sepia(12%) saturate(868%) hue-rotate(156deg) brightness(93%) contrast(92%) !important;
 }
 
 form.simple-input {
@@ -53,4 +55,17 @@ span.form-select {
     padding:15px;
     border-color: var(--color-1);
     border-radius:17px;
+}
+
+#categories-div {
+    display:flex;
+}
+
+div.single-category img {
+    filter:var(--default-filter);
+}
+
+section.categories {
+    background-color:white;
+    padding:20px;
 }
