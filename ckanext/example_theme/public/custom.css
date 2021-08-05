@@ -60,8 +60,14 @@ span.form-select {
 #categories-div {
     display:flex;
     justify-content: space-evenly;
+    align-content: space-between;
+    flex-wrap:wrap;
     width:100%;
     text-align:center;
+}
+
+div.single-category {
+    flex-basis:13%;
 }
 
 #categories-div a {
@@ -73,6 +79,7 @@ div.single-category img {
     filter:var(--default-filter);
     width:8em;
     height:8em;
+    margin-bottom:10px;
 }
 
 div.single-category img:hover {
@@ -82,5 +89,5 @@ div.single-category img:hover {
 
 section.categories {
     background-color:white;
-    padding:20px;
+    padding:80px;
 }
