@@ -57,24 +57,15 @@
 
   <section class='categories'>
     <div id='categories-div'>
+      {% set arr = [["agriculture.png","Agriculture, Food, and Forests"],["cities.png","Cities & Regions"],["connectivity.png","Connectivity"], ["culture.png","Culture"],["demography.png","Demography"],["economy.png","Economy & Finance"],["education.png","Education"]] %}
+      {% for elem in arr %}
       <div class='single-category'>
         <a>
-          <img src='/agriculture.png'>
-          <p>Agriculture, Food, and Forests</p>
+          <img src='/{{elem[0]}}'>
+          <p>{{elem[1]}}</p>
         </a>
       </div>
-      <div class='single-category'>
-        <a>
-          <img src='/cities.png'>
-          <p>Cities & Regions</p>
-        </a>
-      </div>
-      <div class='single-category'>
-        <a>
-          <img src='/connectivity.png'>
-          <p>Connectivity</p>
-        </a>
-      </div>
+      {% endfor %}
     </div>
   </section>
 

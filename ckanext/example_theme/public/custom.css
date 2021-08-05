@@ -59,10 +59,20 @@ span.form-select {
 
 #categories-div {
     display:flex;
+    justify-content: space-evenly;
+    width:100%;
+    text-align:center;
+}
+
+#categories-div a {
+    text-decoration: none;
+    color:var(--color-1);
 }
 
 div.single-category img {
     filter:var(--default-filter);
+    width:8em;
+    height:8em;
 }
 
 div.single-category img:hover {
