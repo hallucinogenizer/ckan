@@ -65,6 +65,11 @@ div.single-category img {
     filter:var(--default-filter);
 }
 
+div.single-category img:hover {
+    filter:var(--hover-filter);
+    cursor:pointer;
+}
+
 section.categories {
     background-color:white;
     padding:20px;
