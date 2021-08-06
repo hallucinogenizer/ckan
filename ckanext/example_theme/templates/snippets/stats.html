@@ -1,0 +1,34 @@
+{% set stats = h.get_site_statistics() %}
+
+<div class="container">
+      {% block stats_group %}
+    <div class='row' align="center">
+        <div class="col-sm-3">
+            <a href="{{ h.url_for(controller='package', action='search') }}">
+                <h3 class='stats-count'>{{ h.SI_number_span(stats.dataset_count) }} <img src="datasets.png"></h3>
+                <h2 class='stats-name'>{{ _('dataset') if stats.dataset_count == 1 else _('datasets') }}</h2>
+            </a>
+        </div>
+        <div class="col-sm-3">
+            <a href="{{ h.url_for(controller='organization', action='index') }}">
+                <h3 class='stats-count'>{{ h.SI_number_span(stats.organization_count) }} <img src="organization.png"></h3>
+                <h2 class='stats-name'>{{ _('organization') if stats.organization_count == 1 else _('organizations') }}</h2>
+                
+            </a>
+        </div>
+        <div class="col-sm-3">
+            <a href="/">
+                <h3 class='stats-count'>14 <img src="categories.png"></h3>
+                <h2 class='stats-name'>Categories</h2>
+            </a>
+        </div>
+        <div class="col-sm-3">
+            <a href="{{ h.url_for(controller='group', action='index') }}">
+                <h3 class='stats-count'>{{ h.SI_number_span(stats.group_count) }} <img src="application.png"></h3>
+                <h2 class='stats-name'>{{ _('group') if stats.group_count == 1 else _('groups') }}</h2>
+            </a>
+        </div>
+        {% endblock %}
+    </div>
+    <hr>
+</div>
