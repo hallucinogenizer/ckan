@@ -143,3 +143,17 @@ h2.stats-name {
     line-height:1.1;
     margin-top:0px;
 }
+
+h1.homepage-footer-heading {
+    font-weight: bold;
+    font-size: 15pt !important;
+}
+
+p.homepage-footer-description {
+    font-size:10pt !important;
+}
+
+img.footer-logo {
+    width:55%!important;
+    height:auto!important;
+}
