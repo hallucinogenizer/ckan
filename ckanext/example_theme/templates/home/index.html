@@ -95,12 +95,18 @@
   </div>
   </section>
 
-  <section class="homepage-stats">
-    {% snippet 'snippets/stats.html' %}
+  <section class='featured-datasets'>
+    <div class="container">
+      <h2 class="main-heading">Featured Datasets</h2>
+      <hr class="underline">
+
+        {% snippet 'snippets/featured_datasets.html', title="Recent Additions", subtitle="Most recent datasets added",result=h.example_theme_newest_datasets() %}
+        {% snippet 'snippets/featured_datasets.html', title="Popular Datasets", subtitle="Most viewed datasets",result=h.example_theme_popular_datasets() %}
+    </div>
   </section>
 
-  <section class='featured-datasets'>
-    {% snippet 'snippets/featured_datasets.html', packages=c.datasets[:4] %}
+  <section class="homepage-stats">
+    {% snippet 'snippets/stats.html' %}
   </section>
 
 {% endblock %}

@@ -6,6 +6,10 @@ def newest_datasets():
     datasets = toolkit.get_action('package_search')(data_dict={'sort':'metadata_modified desc','rows':4})
     return datasets
 
+def popular_datasets():
+    datasets = toolkit.get_action('package_search')(data_dict={'sort':'metadata_modified asc','rows':4})
+    return datasets
+
 class ExampleThemePlugin(plugins.SingletonPlugin):
     '''An example theme plugin.
 
@@ -25,4 +29,4 @@ class ExampleThemePlugin(plugins.SingletonPlugin):
         toolkit.add_resource('fantastic', 'example_theme')
 
     def get_helpers(self):
-        return {'example_theme_newest_datasets':newest_datasets}
+        return {'example_theme_newest_datasets':newest_datasets, 'example_theme_popular_datasets':popular_datasets}

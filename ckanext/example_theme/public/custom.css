@@ -109,9 +109,8 @@ section.calls-actions img:hover {
 
 section.homepage-stats {
     background: #2d2d2d;
-    margin-top: 5em;
+    margin-top: 0;
     color:white!important;
-    margin-top:-30px;
 }
 
 section.homepage-stats div.container {
@@ -160,5 +159,54 @@ img.footer-logo {
 
 section.featured-datasets {
     background-color:white;
-    padding:60px;
+    margin-top:-30px;
+}
+
+section.featured-datasets {
+    padding-bottom:4em;
+}
+
+h2.main-heading {
+    font-size:35pt!important;
+    font-weight:bold!important;
+    color:var(--color-1)!important;
+}
+
+div.column-heading {
+    background:#f6f6f6;
+    padding:1em 2em;
+}
+
+div.dataset-home {
+    padding:1em 2em;
+}
+
+h4.data-heading {
+    font-size: 15pt;
+    font-weight: bold;
+    color:var(--color-2)!important;
+}
+
+h4.data-heading a {
+    color:inherit;
+}
+
+div.dataset-description-home {
+    font-size: 11pt;
+    text-align: justify;
+}
+
+div.column-heading h3 {
+    font-weight:bold;
+    color:var(--color-1);
+    font-size:15pt;
+    margin:0;
+}
+
+hr.underline {
+    margin-top: -2px;
+    border-top: 5px solid var(--color-3);
+    width: 90px;
+    margin-bottom: 2em;
+    margin-left:0;
 }
