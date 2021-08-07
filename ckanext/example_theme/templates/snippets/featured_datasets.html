@@ -1,15 +1,17 @@
 <ul>
 {% set result=h.example_theme_newest_datasets() %}
 {% for dataset in result.results %}
+
+
     
 <div class="dataset-home dataset-item">
     <div class="dataset-content">
         <h4 class="homepage-heading data-heading">
-            <a href="/dataset/district-wise-list-of-tb-clinics-in-kpk">{{dataset.name}}</a>  
+            <a href="/dataset/{{dataset.name}}">{{dataset.title}}</a>  
         </h4>
           
        <div class="data-set-description-home">
-              <div class="data-description">{{dataset.resources[0].description}}</div>
+              <div class="data-description">{{dataset.resources[0].description[:200]}}...</div>
        </div>
     </div>
           <ul class="dataset-resources list-unstyled">
@@ -23,4 +25,4 @@
 {% endfor %}
 </ul>
 
-{# snippet 'snippets/package_grid.html', packages=c.datasets[:4] #}
+{% snippet 'snippets/package_grid.html', packages=c.datasets[:4] %}
