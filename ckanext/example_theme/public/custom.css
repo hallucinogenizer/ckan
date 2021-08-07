@@ -157,3 +157,8 @@ img.footer-logo {
     width:55%!important;
     height:auto!important;
 }
+
+section.featured-datasets {
+    background-color:white;
+    padding:60px;
+}
