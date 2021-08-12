@@ -1,0 +1,17 @@
+<section class='footer'>
+        <nav class='navbar navbar-inverse'>
+            <ul class="nav navbar-nav">
+                {% block header_site_navigation_tabs %} {{ h.build_nav_main( ('search', _('Datasets')), ('organizations_index', _('Organizations')),
+                ('group_index', _('Groups')), ('home.about', _('About')) ) }} {% endblock %}
+                <li class='dropup'>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Events
+                    <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">COVID19 Hackathon</a></li>
+                        <li><a href="#">Datathon</a></li>
+                        <li><a href="#">DATA VIZ Challenge</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+</section>

@@ -42,3 +42,32 @@ div.field {
 li.active a {
     background-color:rgba(0,0,0,0) !important;
 }
+
+section.footer ul.nav {
+    font-size:20px!important;
+    padding:0.8em;
+}
+
+section.footer > nav.navbar {
+    margin-bottom:0!important;
+}
+
+section.footer ul.nav li {
+    padding-right:10px;
+    padding-left:10px;
+}
+
+section.footer ul.nav > li > a {
+    color:white !important;
+}
+
+section.footer ul.nav > li > a:hover {
+    color:var(--color-2) !important;
+}
+
+section.footer .navbar-nav{
+    float:none;
+    margin: 0 auto;
+    display: table;
+    table-layout: fixed;
+}
