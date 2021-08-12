@@ -7,7 +7,7 @@ def newest_datasets():
     return datasets
 
 def popular_datasets():
-    datasets = toolkit.get_action('package_search')(data_dict={'sort':'metadata_modified asc','rows':4})
+    datasets = toolkit.get_action('package_search')(data_dict={'sort':'views_recent desc','rows':4})
     return datasets
 
 class ExampleThemePlugin(plugins.SingletonPlugin):
