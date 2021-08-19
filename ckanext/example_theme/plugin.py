@@ -30,3 +30,10 @@ class ExampleThemePlugin(plugins.SingletonPlugin):
 
     def get_helpers(self):
         return {'example_theme_newest_datasets':newest_datasets, 'example_theme_popular_datasets':popular_datasets}
+
+
+class DatasetCategoriesPlugin(plugins.SingletonPlugin):
+    plugins.implements(plugins.IFacets)
+
+    def update_config(self, config):
+        pass

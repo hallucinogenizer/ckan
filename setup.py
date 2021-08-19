@@ -81,6 +81,7 @@ setup(
     entry_points='''
         [ckan.plugins]
         example_theme=ckanext.example_theme.plugin:ExampleThemePlugin
+        dataset_categories=ckanext.example_theme.plugin:DatasetCategoriesPlugin
 
         [babel.extractors]
         ckan = ckan.lib.extract:extract_ckan
