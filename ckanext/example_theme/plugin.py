@@ -43,7 +43,7 @@ class DatasetCategoriesPlugin(plugins.SingletonPlugin):
         return facets_dict
 
 class DatasetFacetPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
-    plugins.implements(p.IDatasetForm)
+    plugins.implements(plugins.IDatasetForm)
 
     def create_package_schema(self):
         # let's grab the default schema in our plugin
@@ -68,8 +68,8 @@ class DatasetFacetPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     def show_package_schema(self):
         schema = super(DatasetFacetPlugin, self).show_package_schema()
         schema.update({
-            'custom_text': [tk.get_converter('convert_from_extras'),
-                            tk.get_validator('ignore_missing')]
+            'custom_text': [toolkit.get_converter('convert_from_extras'),
+                            toolkit.get_validator('ignore_missing')]
         })
         return schema
 

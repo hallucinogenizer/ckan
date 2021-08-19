@@ -82,6 +82,7 @@ setup(
         [ckan.plugins]
         example_theme=ckanext.example_theme.plugin:ExampleThemePlugin
         dataset_categories=ckanext.example_theme.plugin:DatasetCategoriesPlugin
+        dataset_facet=ckanext.example_theme.plugin:DatasetFacetPlugin
 
         [babel.extractors]
         ckan = ckan.lib.extract:extract_ckan
