@@ -39,36 +39,42 @@ class DatasetCategoriesPlugin(plugins.SingletonPlugin):
         pass
 
     def dataset_facets(self, facets_dict, package_type):
-        facets_dict['categories'] = toolkit._('Categories')
+        facets_dict['category'] = toolkit._('mycategory')
         return facets_dict
 
-class DatasetFacetPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
+class ExampleIDatasetFormPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     plugins.implements(plugins.IDatasetForm)
+    plugins.implements(plugins.IConfigurer)
+
+    def update_config(self, config):
+        # Add this plugin's templates dir to CKAN's extra_template_paths, so
+        # that CKAN will use this plugin's custom templates.
+        # tk.add_template_directory(config, 'templates')
+        toolkit.add_template_directory(config, 'templates')
 
     def create_package_schema(self):
         # let's grab the default schema in our plugin
-        schema = super(DatasetFacetPlugin, self).create_package_schema()
+        schema = super(ExampleIDatasetFormPlugin, self).create_package_schema()
         # our custom field
         schema.update({
-            'Category': [toolkit.get_validator('ignore_missing'),
-                        toolkit.get_converter('convert_to_extras')]
+            'category': [toolkit.get_validator('ignore_missing'),
+                            toolkit.get_converter('convert_to_extras')]
         })
         return schema
 
     def update_package_schema(self):
-        # let's grab the default schema in our plugin
-        schema = super(DatasetFacetPlugin, self).create_package_schema()
+        schema = super(ExampleIDatasetFormPlugin, self).update_package_schema()
         # our custom field
         schema.update({
-            'Category': [toolkit.get_validator('ignore_missing'),
-                        toolkit.get_converter('convert_to_extras')]
+            'category': [toolkit.get_validator('ignore_missing'),
+                            toolkit.get_converter('convert_to_extras')]
         })
         return schema
 
     def show_package_schema(self):
-        schema = super(DatasetFacetPlugin, self).show_package_schema()
+        schema = super(ExampleIDatasetFormPlugin, self).show_package_schema()
         schema.update({
-            'custom_text': [toolkit.get_converter('convert_from_extras'),
+            'category': [toolkit.get_converter('convert_from_extras'),
                             toolkit.get_validator('ignore_missing')]
         })
         return schema

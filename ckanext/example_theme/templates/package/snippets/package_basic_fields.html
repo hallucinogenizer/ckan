@@ -1,0 +1,6 @@
+{% ckan_extends %}
+
+{% block package_basic_fields_custom %}
+  {#{{ form.input('category', label=_('category'), id='field-category', placeholder=_('category'), value=data.category, error=errors.category, classes=['control-medium']) }}#}
+  {{ form.input('category', label=_('Category'), id='field-category', placeholder=_('category'), value=data.category, error=errors.category, classes=['control-medium']) }}
+  {% endblock %}
