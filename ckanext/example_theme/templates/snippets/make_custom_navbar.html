@@ -1,0 +1,15 @@
+<ul class="nav navbar-nav navbar-right">
+    {% for obj in navbar_format %}
+        {% if obj[1] is string %}
+            {{ h.build_nav(obj[1],obj[0]) }}
+        {% else %}
+        <li class="nav-button dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{obj[0]}}<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+            {% for item in obj[1] %}
+                {{ h.build_nav(item[1],item[0]) }}
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endfor %}
+</ul>
