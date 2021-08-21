@@ -39,7 +39,7 @@ class DatasetCategoriesPlugin(plugins.SingletonPlugin):
         pass
 
     def dataset_facets(self, facets_dict, package_type):
-        facets_dict['category'] = toolkit._('mycategory')
+        facets_dict['category'] = toolkit._('Category')
         return facets_dict
 
 class ExampleIDatasetFormPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
