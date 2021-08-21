@@ -1,0 +1,8 @@
+{% ckan_extends %}
+
+{% block package_basic_fields_custom %}
+  {#{{ form.input('category', label=_('category'), id='field-category', placeholder=_('category'), value=data.category, error=errors.category, classes=['control-medium']) }}#}
+  {{ 
+    form.select('category', label=_('Category'), id='field-category', selected="Public Safety", error=errors.category, classes=['control-medium'], options=[{'name':'Public Safety', 'value': 'Public Safety'},{'name':'Economy & Finance', 'value': 'Economy & Finance'},{'name':'Government & Public Sector','value':'Government & Public Sector'},{'name':'Demography','value':'Demography'},{'name':'Health','value':'Health'},{'name':'Environment & Energy','value':'Environment & Energy'},{'name':'Education','value':'Education'},{'name':'Cities & Regions','value':'Cities & Regions'},{'name':'Housing & Public Services','value':'Housing & Public Services'},{'name':'Connectivity','value':'Connectivity'},{'name':'Agriculture, Food, & Forests','value':'Agriculture, Food, & Forests'},{'name':'Manufacturing','value':'Manufacturing'},{'name':'Science & Technology','value':'Science & Technology'},{'name':'Culture','value':'Culture'}])
+}}
+  {% endblock %}

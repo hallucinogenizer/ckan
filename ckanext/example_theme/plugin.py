@@ -1,5 +1,6 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
+from collections import OrderedDict
 
 
 def newest_datasets():
@@ -30,3 +31,67 @@ class ExampleThemePlugin(plugins.SingletonPlugin):
 
     def get_helpers(self):
         return {'example_theme_newest_datasets':newest_datasets, 'example_theme_popular_datasets':popular_datasets}
+
+
+class DatasetCategoriesPlugin(plugins.SingletonPlugin):
+    plugins.implements(plugins.IFacets)
+
+    def update_config(self, config):
+        pass
+
+    def dataset_facets(self, facets_dict, package_type):
+        # facets_dict['category'] = toolkit._('Category')
+        facets = OrderedDict()
+        facets['category'] = toolkit._('Categories')
+        facets['location'] = toolkit._('Locations')
+        facets['tags']=toolkit._('Tags')
+        facets['res_format']=toolkit._('Formats')
+        facets['organization'] = toolkit._('Organizations')
+        return facets
+
+class ExampleIDatasetFormPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
+    plugins.implements(plugins.IDatasetForm)
+    plugins.implements(plugins.IConfigurer)
+
+    def update_config(self, config):
+        # Add this plugin's templates dir to CKAN's extra_template_paths, so
+        # that CKAN will use this plugin's custom templates.
+        # tk.add_template_directory(config, 'templates')
+        toolkit.add_template_directory(config, 'templates')
+
+    def create_package_schema(self):
+        # let's grab the default schema in our plugin
+        schema = super(ExampleIDatasetFormPlugin, self).create_package_schema()
+        # our custom field
+        schema.update({
+            'category': [toolkit.get_validator('ignore_missing'),
+                            toolkit.get_converter('convert_to_extras')]
+        })
+        return schema
+
+    def update_package_schema(self):
+        schema = super(ExampleIDatasetFormPlugin, self).update_package_schema()
+        # our custom field
+        schema.update({
+            'category': [toolkit.get_validator('ignore_missing'),
+                            toolkit.get_converter('convert_to_extras')]
+        })
+        return schema
+
+    def show_package_schema(self):
+        schema = super(ExampleIDatasetFormPlugin, self).show_package_schema()
+        schema.update({
+            'category': [toolkit.get_converter('convert_from_extras'),
+                            toolkit.get_validator('ignore_missing')]
+        })
+        return schema
+
+    def is_fallback(self):
+        # Return True to register this plugin as the default handler for
+        # package types not handled by any other IDatasetForm plugin.
+        return True
+
+    def package_types(self):
+        # This plugin doesn't handle any special package types, it just
+        # registers itself as the default (above).
+        return []
