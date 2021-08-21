@@ -1,0 +1,24 @@
+h2.module-heading {
+    background: var(--color-2) !important;
+    color: white !important;
+    font-size: 15pt;
+    font-weight: bold;
+    font-family:"Roboto",sans-serif;
+}
+
+h2.module-heading::before {
+    content:''!important;
+}
+
+.module-narrow .nav-item > a {
+    padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
+    color: var(--color-1) !important;
+    font-size: 10pt;
+    font-family:"Roboto",sans-serif;
+}
+
+.dataset-heading > a, .homepage-heading.data-heading > a {
+    color: var(--color-2) !important;
+}
