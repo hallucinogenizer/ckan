@@ -1,5 +1,6 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
+from collections import OrderedDict
 
 
 def newest_datasets():
@@ -39,8 +40,14 @@ class DatasetCategoriesPlugin(plugins.SingletonPlugin):
         pass
 
     def dataset_facets(self, facets_dict, package_type):
-        facets_dict['category'] = toolkit._('Category')
-        return facets_dict
+        # facets_dict['category'] = toolkit._('Category')
+        facets = OrderedDict()
+        facets['category'] = toolkit._('Categories')
+        facets['location'] = toolkit._('Locations')
+        facets['tags']=toolkit._('Tags')
+        facets['res_format']=toolkit._('Formats')
+        facets['organization'] = toolkit._('Organizations')
+        return facets
 
 class ExampleIDatasetFormPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     plugins.implements(plugins.IDatasetForm)

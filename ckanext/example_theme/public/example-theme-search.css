@@ -22,3 +22,11 @@ h2.module-heading::before {
 .dataset-heading > a, .homepage-heading.data-heading > a {
     color: var(--color-2) !important;
 }
+
+#content {
+    padding:15px 0px;
+}
+
+.row {
+    margin:0!important;
+}
