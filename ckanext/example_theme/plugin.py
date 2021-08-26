@@ -33,21 +33,7 @@ class ExampleThemePlugin(plugins.SingletonPlugin):
         return {'example_theme_newest_datasets':newest_datasets, 'example_theme_popular_datasets':popular_datasets}
 
 
-class DatasetCategoriesPlugin(plugins.SingletonPlugin):
-    plugins.implements(plugins.IFacets)
 
-    def update_config(self, config):
-        pass
-
-    def dataset_facets(self, facets_dict, package_type):
-        # facets_dict['category'] = toolkit._('Category')
-        facets = OrderedDict()
-        facets['category'] = toolkit._('Categories')
-        facets['location'] = toolkit._('Locations')
-        facets['tags']=toolkit._('Tags')
-        facets['res_format']=toolkit._('Formats')
-        facets['organization'] = toolkit._('Organizations')
-        return facets
 
 class ExampleIDatasetFormPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     plugins.implements(plugins.IDatasetForm)

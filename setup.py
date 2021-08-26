@@ -81,7 +81,6 @@ setup(
     entry_points='''
         [ckan.plugins]
         example_theme=ckanext.example_theme.plugin:ExampleThemePlugin
-        dataset_categories=ckanext.example_theme.plugin:DatasetCategoriesPlugin
         example_dataset_facet=ckanext.example_theme.plugin:ExampleIDatasetFormPlugin
 
         [babel.extractors]
