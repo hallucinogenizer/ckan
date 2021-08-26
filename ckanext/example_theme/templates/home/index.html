@@ -60,7 +60,13 @@
       {% set arr = [["agriculture.png","Agriculture, Food, and Forests"],["cities.png","Cities & Regions"],["connectivity.png","Connectivity"], ["culture.png","Culture"],["demography.png","Demography"],["economy.png","Economy & Finance"],["education.png","Education"],["envoirnment.png","Environment & Energy"],["government.png","Government & Public Sector"],["health.png","Health"],["housing.png","Housing & Public Services"],["manufecturing.png","Manufacturing"],["publicsafety.png","Public Safety"],["science.png","Science & Technology"]] %}
       {% for elem in arr %}
       <div class='single-category'>
-        <a>
+        <a href={{
+          h.url_for(
+          controller="package", 
+          action="search", 
+          category=elem[1]
+          )
+        }}>
           <img src='/{{elem[0]}}'>
           <p>{{elem[1]}}</p>
         </a>
@@ -74,12 +80,12 @@
       <div class="container">
           <div class="row-fluid" align="center">
               <div class="col-sm-12 col-md-4">
-                  <a href="/organization">
+                  <a href={{h.url_for("organizations_index")}}>
                       <img class="homepage-action-image image-fluid image-responsive" src="/data.png">
                   </a>
               </div>
               <div class="col-sm-12 col-md-4">
-                  <a href="/showcase">
+                  <a href={{h.url_for("showcase_index")}}>
                       <img class="homepage-action-image image-fluid image-responsive" src="/story.png">
                   
                   </a>
