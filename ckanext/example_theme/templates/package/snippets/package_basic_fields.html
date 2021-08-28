@@ -7,4 +7,8 @@
     form.select('category', label=_('Category'), id='field-category', error=errors.category, classes=['control-medium'], options=[{'text':'Select a value', 'value': 'None'},{'text':'Public Safety', 'value': 'Public Safety'},{'text':'Economy & Finance', 'value': 'Economy & Finance'},{'text':'Government & Public Sector','value':'Government & Public Sector'},{'text':'Demography','value':'Demography'},{'text':'Health','value':'Health'},{'text':'Environment & Energy','value':'Environment & Energy'},{'text':'Education','value':'Education'},{'text':'Cities & Regions','value':'Cities & Regions'},{'text':'Housing & Public Services','value':'Housing & Public Services'},{'text':'Connectivity','value':'Connectivity'},{'text':'Agriculture, Food, & Forests','value':'Agriculture, Food, & Forests'},{'text':'Manufacturing','value':'Manufacturing'},{'text':'Science & Technology','value':'Science & Technology'},{'text':'Culture','value':'Culture'}], selected="{{data.get('category')}}")
 }}
 
+  <script>
+    document.getElementById('field-category').value= "{{data.get('category')}}"
+  </script>
+
   {% endblock %}
