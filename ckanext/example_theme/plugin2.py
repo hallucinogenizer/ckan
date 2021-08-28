@@ -16,20 +16,18 @@ def default_category_validator(value):
     else:
         raise toolkit.Invalid("Please select a value other than the default one.")
 
-class ExampleThemePlugin(plugins.SingletonPlugin):
-    '''An example theme plugin.
 
-    '''
-    # Declare that this class implements IConfigurer.
+
+class ExampleIDatasetFormPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
+    plugins.implements(plugins.IDatasetForm)
     plugins.implements(plugins.IConfigurer)
+    plugins.implements(plugins.IValidators)
     plugins.implements(plugins.ITemplateHelpers)
 
     def update_config(self, config):
-
         # Add this plugin's templates dir to CKAN's extra_template_paths, so
         # that CKAN will use this plugin's custom templates.
-        # 'templates' is the path to the templates dir, relative to this
-        # plugin.py file.
+        # tk.add_template_directory(config, 'templates')
         toolkit.add_template_directory(config, 'templates')
         toolkit.add_public_directory(config, 'public')
         toolkit.add_resource('fantastic', 'example_theme')
@@ -38,20 +36,13 @@ class ExampleThemePlugin(plugins.SingletonPlugin):
         return {'example_theme_newest_datasets':newest_datasets, 'example_theme_popular_datasets':popular_datasets}
 
 
-
-class ExampleIDatasetFormPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
-    plugins.implements(plugins.IDatasetForm)
-    # plugins.implements(plugins.IConfigurer)
-    plugins.implements(plugins.IValidators)
-
-
     def get_validators(self):
         return {'default_category_validator':default_category_validator}
 
     def _modify_package_schema(self, schema):
         schema.update({
             'category': [toolkit.get_validator('default_category_validator'),
-            toolkit.get_converter('convert_to_extras')]
+                        toolkit.get_converter('convert_to_extras')]
         })
         return schema
 
@@ -70,10 +61,7 @@ class ExampleIDatasetFormPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetF
 
     def show_package_schema(self):
         schema = super(ExampleIDatasetFormPlugin, self).show_package_schema()
-        schema.update({
-            'category': [toolkit.get_converter('convert_from_extras'),
-                            toolkit.get_validator('default_category_validator')]
-        })
+        schema = self._modify_package_schema(schema)
         return schema
 
     def is_fallback(self):
