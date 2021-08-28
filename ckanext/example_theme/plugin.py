@@ -1,6 +1,7 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 
+preset_categories = ['Public Safety','Economy & Finance','Government & Public Sector','Demography','Health','Environment & Energy','Education','Cities & Regions','Housing & Public Services','Connectivity','Agriculture, Food, & Forests','Manufacturing','Science & Technology','Culture']
 
 def newest_datasets():
     datasets = toolkit.get_action('package_search')(data_dict={'sort':'metadata_modified desc','rows':4})
@@ -11,10 +12,17 @@ def popular_datasets():
     return datasets
 
 def default_category_validator(value):
-    if value in ['Public Safety','Economy & Finance','Government & Public Sector','Demography','Health','Environment & Energy','Education','Cities & Regions','Housing & Public Services','Connectivity','Agriculture, Food, & Forests','Manufacturing','Science & Technology','Culture']:
+    if value in preset_categories:
         return value
     else:
         raise toolkit.Invalid("Please select a value other than the default one.")
+
+def get_preset_categories():
+    list = []
+    list.append({'text':'Select a value', 'value': 'None'})
+    for category in preset_categories:
+        list.append({'text':category, 'value':category})
+    return list
 
 class ExampleThemePlugin(plugins.SingletonPlugin):
     '''An example theme plugin.
@@ -43,10 +51,14 @@ class ExampleIDatasetFormPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetF
     plugins.implements(plugins.IDatasetForm)
     # plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IValidators)
+    plugins.implements(plugins.ITemplateHelpers)
 
 
     def get_validators(self):
         return {'default_category_validator':default_category_validator}
+
+    def get_helpers(self):
+        return {'get_preset_categories':get_preset_categories}
 
     def _modify_package_schema(self, schema):
         schema.update({
