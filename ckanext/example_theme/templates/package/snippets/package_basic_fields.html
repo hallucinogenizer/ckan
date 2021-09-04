@@ -17,7 +17,7 @@
 {% set locs = data.locations %}
   <label class="control-label" for="field-locations">Location Tags</label>
   <div class="controls">
-  <select class="select control-full" data-module="autocomplete" data-module-source='/api/2/util/tag/autocomplete?incomplete=?&vocabulary_id=locations' id='field-locations' name='locations' value={{data.locations}} multiple>
+  <select multiple class="select control-full" data-module="autocomplete" id='field-locations' name='locations' value={{data.locations}}>
       {% for opt in options %}
       {% if opt in locs %}
       <option value={{opt}} selected="selected" >{{opt}}</option>
