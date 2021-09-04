@@ -12,6 +12,20 @@ def popular_datasets():
     datasets = toolkit.get_action('package_search')(data_dict={'sort':'views_recent desc','rows':4})
     return datasets
 
+def num_datasets_in_organization(org_id):
+    num_datasets = toolkit.get_action('organization_show')(data_dict=
+    {
+        'id':org_id,
+        'include_dataset_count':True,
+        'include_datasets':True
+    })
+    return num_datasets
+
+def get_package_views(package_id):
+    package_views = toolkit.get_action('package_show')(data_dict={'id':package_id,'include_tracking':True})
+    return package_views
+
+
 def default_category_validator(value):
     if value in preset_categories:
         return value
@@ -66,7 +80,9 @@ class ExampleThemePlugin(plugins.SingletonPlugin):
         toolkit.add_resource('fantastic', 'example_theme')
 
     def get_helpers(self):
-        return {'example_theme_newest_datasets':newest_datasets, 'example_theme_popular_datasets':popular_datasets}
+        return {'example_theme_newest_datasets':newest_datasets, 'example_theme_popular_datasets':popular_datasets,
+        'num_datasets_in_organization':num_datasets_in_organization,
+        'get_package_views':get_package_views}
 
 
 

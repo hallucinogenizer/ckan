@@ -1,0 +1,21 @@
+{% ckan_extends %}
+
+{% block nums %}
+{% set total_views=0 %}
+{% for package in h.num_datasets_in_organization(organization.id).packages %}
+    {% set total_views = total_views + h.get_package_views(package.id).tracking_summary.total%}
+{%endfor%}
+
+{{total_views}}
+<div class="nums">
+    <dl>
+        <dt>{{ _('Datasets') }}</dt>
+        <dd>{{ h.SI_number_span(organization.package_count) }}</dd>
+    </dl>
+    <dl>
+        <dt>{{ _('Total Views') }}</dt>
+        <dd>{{ h.SI_number_span(total_views) }}</dd>
+    </dl>
+</div>
+
+{% endblock %}
