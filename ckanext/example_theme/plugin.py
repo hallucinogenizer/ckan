@@ -1,5 +1,6 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
+from collections import OrderedDict
 
 preset_categories = ['Public Safety','Economy & Finance','Government & Public Sector','Demography','Health','Environment & Energy','Education','Cities & Regions','Housing & Public Services','Connectivity','Agriculture, Food, & Forests','Manufacturing','Science & Technology','Culture']
 
@@ -23,6 +24,28 @@ def get_preset_categories():
     for category in preset_categories:
         list.append({'text':category, 'value':category})
     return list
+
+def create_locations():
+    user = toolkit.get_action('get_site_user')({'ignore_auth': True}, {})
+    context = {'user': user['name']}
+    try:
+        data = {'id': 'locations'}
+        toolkit.get_action('vocabulary_show')(context, data)
+    except toolkit.ObjectNotFound:
+        data = {'name': 'locations'}
+        vocab = toolkit.get_action('vocabulary_create')(context, data)
+        for tag in (u'Lahore', u'Islamabad', u'Karachi', u'Multan', u'Peshawar'):
+            data = {'name': tag, 'vocabulary_id': vocab['id']}
+            toolkit.get_action('tag_create')(context, data)
+
+def locations():
+    create_locations()
+    try:
+        tag_list = toolkit.get_action('tag_list')
+        current_locations = tag_list(data_dict={'vocabulary_id': 'locations'})
+        return current_locations
+    except toolkit.ObjectNotFound:
+        return None
 
 class ExampleThemePlugin(plugins.SingletonPlugin):
     '''An example theme plugin.
@@ -54,17 +77,31 @@ class ExampleIDatasetFormPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetF
     plugins.implements(plugins.ITemplateHelpers)
 
 
+    def update_config(self, config_):
+        toolkit.add_template_directory(config_, 'templates')
+        toolkit.add_public_directory(config_, 'public')
+        toolkit.add_resource('fanstatic', 'datasetlocations')
+
+    # IDatasetForm
+    def get_helpers(self):
+        return {'locations': locations,'get_preset_categories':get_preset_categories}
+
+    # My custom converter
+    plugins.implements(plugins.IValidators)
     def get_validators(self):
         return {'default_category_validator':default_category_validator}
-
-    def get_helpers(self):
-        return {'get_preset_categories':get_preset_categories}
 
     def _modify_package_schema(self, schema):
         schema.update({
             'category': [toolkit.get_validator('default_category_validator'),
             toolkit.get_converter('convert_to_extras')]
         })
+        schema.update({
+            'locations': [
+                            toolkit.get_converter('convert_to_tags')('locations'),
+                            toolkit.get_validator('ignore_missing')]
+        })
+
         return schema
 
     def create_package_schema(self):
@@ -86,6 +123,12 @@ class ExampleIDatasetFormPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetF
             'category': [toolkit.get_converter('convert_from_extras'),
                             toolkit.get_validator('default_category_validator')]
         })
+        schema['tags']['__extras'].append(toolkit.get_converter('free_tags_only'))
+        schema.update({
+            'locations': [
+                toolkit.get_converter('convert_from_tags')('locations'),
+                toolkit.get_validator('ignore_missing')]
+            })
         return schema
 
     def is_fallback(self):

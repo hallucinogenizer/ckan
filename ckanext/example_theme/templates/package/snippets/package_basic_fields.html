@@ -1,14 +1,30 @@
 {% ckan_extends %}
 
 {% block package_basic_fields_custom %}
-
-{#{{ form.input('category', label=_('category'), id='field-category', placeholder=_('category'), value=data.category, error=errors.category, classes=['control-medium']) }}#}
 {{ 
-    form.select('category', label=_('Category'), id='field-category', error=errors.category, classes=['control-medium'], options=h.get_preset_categories(), selected="{{data.get('category')}}")
+  form.select('category', label=_('Category'), id='field-category', error=errors.category, classes=['control-medium'], options=h.get_preset_categories(), selected="{{data.get('category')}}")
 }}
 
-  <script>
-    document.getElementById('field-category').value= "{{data.get('category')}}"
-  </script>
+<script>
+  document.getElementById('field-category').value= "{{data.get('category')}}".replaceAll("&amp;","&")
+</script>
 
-  {% endblock %}
+
+{% set location_attrs = {'data-module': 'autocomplete', 'data-module-tags': '', 'data-module-source': '/api/2/util/tag/autocomplete?incomplete=?&vocabulary_id=locations'} %}
+{% set options = h.locations() %}
+{#{{ form.input('locations', id='field-location', label=_('Locations'), placeholder=_('eg. Lahore'), value=data.locations, error=errors.locations, classes=['control-full'], attrs=location_attrs) }}#}
+
+{% set locs = data.locations %}
+  <label class="control-label" for="field-locations">Location Tags</label>
+  <div class="controls">
+  <select class="select control-full" data-module="autocomplete" data-module-source='/api/2/util/tag/autocomplete?incomplete=?&vocabulary_id=locations' id='field-locations' name='locations' value={{data.locations}} multiple>
+      {% for opt in options %}
+      {% if opt in locs %}
+      <option value={{opt}} selected="selected" >{{opt}}</option>
+      {% else %}
+      <option value={{opt}}>{{opt}}</option>
+      {% endif %}
+      {% endfor %}
+    </select>
+  </div>
+{% endblock %}
