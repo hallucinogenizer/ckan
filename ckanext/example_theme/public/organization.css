@@ -1,0 +1,20 @@
+div.main-content {
+    font-family:'Roboto', sans-serif;
+    padding:30px 15px;
+}
+
+.btn-primary {
+    background-color: var(--color-2);
+    border:none;
+    padding:0.7em;
+}
+
+li.dataset-heading > a {
+    color: var(--color-2) !important;
+}
+
+li.dataset-heading {
+    font-weight: bold !important;
+    font-size: 16px;
+    line-height: 1.3;
+}

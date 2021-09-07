@@ -1,0 +1,29 @@
+{% ckan_extends %}
+
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="/example-theme-search.css">
+    <link rel="stylesheet" href="/read_base.css">
+{% endblock %}
+
+{% block secondary_content %}
+    {{super()}}
+
+    <!-- Publisher Email -->
+    <section class="module module-narrow module-shallow"> 
+        <h2 class="module-heading"><i class="fa fa-mail"></i> Publisher Email</h2>
+        <div class="module-content" id="similar-datasets" style="padding:13px!important;">
+            <a href="mailto: {{pkg.author_email}}">{{pkg.author_email}}</a>
+        </div>
+    </section>
+
+    <!-- Similar Datasets -->
+    <section class="module module-narrow module-shallow"> 
+        <h2 class="module-heading"><i class="fa fa-paperclip"></i> Similar Datasets</h2>
+        <div class="module-content" id="similar-datasets" style="padding:13px!important;">
+            {% for single_dataset in h.get_packages_in_category(pkg.category,pkg.id) %}
+                {% snippet "package/snippets/show_single_dataset.html", dataset=single_dataset %}
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}
