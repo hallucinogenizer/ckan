@@ -1,0 +1,30 @@
+body {
+    font-family:'Roboto', sans-serif;
+}
+
+h3.dataset-heading {
+    color: var(--color-2) !important;
+}
+
+#organization-datasets-search-form > h2 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+}
+
+header.module-content > ul.nav > li {
+    margin-bottom:-1px;
+}
+
+header.module-content > ul.nav > li.active {
+    background: var(--color-2);
+}
+
+header.module-content > ul.nav > li.active > a {
+    color: white;
+}
+
+.page-header .nav-tabs li a {
+    color: var(--color-2);
+}

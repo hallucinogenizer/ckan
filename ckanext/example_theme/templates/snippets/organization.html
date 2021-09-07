@@ -5,7 +5,6 @@
 {% for package in h.num_datasets_in_organization(organization.id).packages %}
     {% set total_views = total_views + h.get_package_views(package.id).tracking_summary.total%}
 {%endfor%}
-
 {{total_views}}
 <div class="nums">
     <dl>
@@ -18,4 +17,7 @@
     </dl>
 </div>
 
+{% endblock %}
+
+{% block follow %}
 {% endblock %}
