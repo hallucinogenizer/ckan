@@ -1,29 +1,35 @@
+{% if headingOrNot=="true" %}
+{% block featured_heading %}
 <div class='col-md-6 col-sm-12' style="border: 1px solid #e6e7e8;padding:0;">
     <div class='column-heading'>
       <h3>{{title}}</h3>
       <p>{{subtitle}}</p>
     </div>
+{% endblock %}
+{% endif %}
 
-{% for dataset in result.results %}
+{% block list_of_datasets %}
+  {% for dataset in result.results %}
 
-<div class="dataset-home">
-    <div class="dataset-content">
-        <h4 class="data-heading">
-            <a href="/dataset/{{dataset.name}}">{{dataset.title}}</a>  
-        </h4>
-          
-       <div class="dataset-description-home">
-              <div class="data-description">{{dataset.resources[0].description[:200]}}...</div>
-       </div>
-    </div>
-          <ul class="dataset-resources list-unstyled">
-            {% for resource in dataset.resources%}
-            <li>
-                <a href="{{resource.url}}" class="label label-default" data-format={{resource.format|lower}}>{{resource.format}}</a>
-            </li>
-            {% endfor %}    
-          </ul>
-</div>
-{% endfor %}
+  <div class="dataset-home">
+      <div class="dataset-content">
+          <h4 class="data-heading">
+              <a href="/dataset/{{dataset.name}}">{{dataset.title}}</a>  
+          </h4>
+            
+        <div class="dataset-description-home">
+                <div class="data-description">{{dataset.resources[0].description[:200]}}...</div>
+        </div>
+      </div>
+            <ul class="dataset-resources list-unstyled">
+              {% for resource in dataset.resources%}
+              <li>
+                  <a href="{{resource.url}}" class="label label-default" data-format={{resource.format|lower}}>{{resource.format}}</a>
+              </li>
+              {% endfor %}    
+            </ul>
+  </div>
+  {% endfor %}
+{% endblock %}
 </div>
 {# snippet 'snippets/package_grid.html', packages=c.datasets[:4] #}

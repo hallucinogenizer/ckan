@@ -28,3 +28,32 @@ header.module-content > ul.nav > li.active > a {
 .page-header .nav-tabs li a {
     color: var(--color-2);
 }
+
+div.page_primary_action > a {
+    background-color: var(--color-2) !important;
+    border-color:var(--color-2);
+}
+
+#similar-datasets {
+    font-family:'Roboto',sans-serif;
+}
+
+#similar-datasets h4.data-heading {
+    margin-top:0;
+}
+
+#similar-datasets h4.data-heading a {
+    color: var(--color-2) !important;
+    font-size:18px;
+    font-weight:bold;
+    font-family:inherit;
+}
+
+#similar-datasets .data-description {
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    font-weight: normal;
+    font-style: italic;
+    font-family:inherit;
+}

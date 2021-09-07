@@ -28,6 +28,19 @@ def get_package_views(package_id):
     package_views = toolkit.get_action('package_show')(data_dict={'id':package_id,'include_tracking':True})
     return package_views
 
+def get_packages_in_category(category,package_id):
+    # get all similar packages, except the same package (the one that has id=package_id)
+    datasets = toolkit.get_action('package_search')(data_dict={'sort':'views_recent desc'})
+    final_datasets = []
+    x=0
+    for dataset in datasets["results"]:
+        if (dataset["category"]==category and dataset["id"]!=package_id):
+            if (x!=3):
+                final_datasets.append(dataset)
+                x=x+1
+            else:
+                break
+    return final_datasets
 
 def default_category_validator(value):
     if value in preset_categories:
@@ -86,9 +99,8 @@ class ExampleThemePlugin(plugins.SingletonPlugin):
         return {'example_theme_newest_datasets':newest_datasets, 'example_theme_popular_datasets':popular_datasets,
         'num_datasets_in_organization':num_datasets_in_organization,
         'get_package_views':get_package_views,
-        'list_to_comma_separated_string':list_to_comma_separated_string}
-
-
+        'list_to_comma_separated_string':list_to_comma_separated_string,
+        'get_packages_in_category':get_packages_in_category}
 
 class ExampleIDatasetFormPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     plugins.implements(plugins.IDatasetForm)
