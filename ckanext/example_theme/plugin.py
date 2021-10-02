@@ -133,6 +133,10 @@ class ExampleIDatasetFormPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetF
                             toolkit.get_converter('convert_to_tags')('locations'),
                             toolkit.get_validator('ignore_missing')]
         })
+        schema.update({
+            'data_source': [
+            toolkit.get_converter('convert_to_extras')]
+        })
 
         return schema
 
@@ -161,6 +165,9 @@ class ExampleIDatasetFormPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetF
                 toolkit.get_converter('convert_from_tags')('locations'),
                 toolkit.get_validator('ignore_missing')]
             })
+        schema.update({
+            'data_source': [toolkit.get_converter('convert_from_extras')]
+        })
         return schema
 
     def is_fallback(self):
