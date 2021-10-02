@@ -1,4 +1,4 @@
-h2.module-heading {
+.module-heading {
     background: var(--color-2) !important;
     color: white !important;
     font-size: 15pt;
@@ -6,7 +6,7 @@ h2.module-heading {
     font-family:"Roboto",sans-serif;
 }
 
-h2.module-heading::before {
+.module-heading::before {
     content:''!important;
 }
 

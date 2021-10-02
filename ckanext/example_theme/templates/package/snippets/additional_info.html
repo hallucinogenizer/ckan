@@ -3,6 +3,7 @@
 {{super()}}
 
 {% block extras %}
+{{super()}}
   {% if pkg_dict.category %}
     <tr>
       <th scope="row" class="dataset-label">{{ _("Category") }}</th>
@@ -10,12 +11,5 @@
     </tr>
   {% endif %}
 
-  {% if pkg_dict.locations %}
-    <tr>
-      <th scope="row" class="dataset-label">{{ _("Location") }}</th>
-      <td class="dataset-details">{{ h.list_to_comma_separated_string(pkg_dict.locations) }}</td>
-    </tr>
-  {% else %}
-  <p>{{pkg_dict.locations}}</p>
-  {% endif %}
+
 {% endblock %}
